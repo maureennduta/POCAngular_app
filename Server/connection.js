@@ -30,7 +30,6 @@ const serviceDef = {
 function dbConnection() {
   return new Promise((resolve, reject) => {
     resolve(dbCon);
-    console.log(dbCon);
   });
 }
 
