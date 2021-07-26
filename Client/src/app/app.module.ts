@@ -7,6 +7,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 import { PatientDetailsComponent } from './components/patient-details/patient-details.component';
+import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+import { PatientsService } from './services/patients.service';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +22,12 @@ import { PatientDetailsComponent } from './components/patient-details/patient-de
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    DataTablesModule,
+    HttpClientModule 
   ],
-  providers: [],
+  providers: [PatientsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

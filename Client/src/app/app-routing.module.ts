@@ -4,8 +4,8 @@ import { PatientDetailsComponent } from './components/patient-details/patient-de
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 
 const routes: Routes = [
-  {path:  "", pathMatch:  "full",redirectTo:  "home"},
-  {path: "home", component: PatientListComponent},
+  {path:  "", pathMatch:  "full",redirectTo:  "patient_list"},
+  {path: "patient_list", component: PatientListComponent},
   {path: "patient_details", component: PatientDetailsComponent},
 ];
 
