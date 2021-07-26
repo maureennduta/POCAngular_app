@@ -14,7 +14,7 @@ const init = async () => {
     //home
     {
       method: "GET",
-      path: "/",
+      path: "/api",
       handler: (request, h) => {
         return "Hello hapi!";
       },
@@ -23,7 +23,7 @@ const init = async () => {
     //patients list
     {
       method: "GET",
-      path: "/patients",
+      path: "/api/patients",
       handler: (request, h) => {
         return dbService.getPatients();
       },
@@ -32,7 +32,7 @@ const init = async () => {
     //Hiv monthly report
     {
       method: "GET",
-      path: "/hivReport",
+      path: "/api/hivReport",
       handler: (request, h) => {
         return dbService.getHivReport();
       },
@@ -41,7 +41,7 @@ const init = async () => {
     //HIV Monthly Report Patient List
     {
       method: "GET",
-      path: "/patientListReport",
+      path: "/api/patientListReport",
       handler: (request, h) => {
         return dbService.getPatientsHivReport();
       },
