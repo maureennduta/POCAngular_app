@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { DataTablesModule } from 'angular-datatables';
+import {HttpClientTestingModule} from '@angular/common/http/testing'
 import { PatientListComponent } from './patient-list.component';
 
 describe('PatientListComponent', () => {
@@ -8,7 +9,8 @@ describe('PatientListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PatientListComponent ]
+      declarations: [ PatientListComponent ],
+      imports:[DataTablesModule,HttpClientTestingModule]
     })
     .compileComponents();
   });
