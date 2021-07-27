@@ -5,15 +5,11 @@
       <div class="input-group mb-4">
         <input
           type="text"
+          #name
           class="form-control"
-          placeholder="Search by name"
-          [(ngModel)]="name"
+          placeholder="Search Patient"
+          (input)="fetchPatientByName(name.value)"
         />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">
-            Search
-          </button>
-        </div>
       </div>
     </div>
     <div class="col-lg-2"></div>
@@ -23,10 +19,11 @@
     <div class="col-lg-2"></div>
     <div class="col-lg-8">
       <table
-        datatable
+        datatable="ng"
         [dtOptions]="dtOptions"
         [dtTrigger]="dtTrigger"
         class="table table-hover"
+        ng-if="patients"
       >
         <thead>
           <tr>
@@ -38,7 +35,7 @@
           </tr>
         </thead>
 
-        <tbody>
+        <tbody *ngIf="patients?.length != 0">
           <tr *ngFor="let patient of patients">
             <td>{{ patient.name }}</td>
             <td>{{ patient.age }}</td>
@@ -47,6 +44,12 @@
             <td>{{ patient.phone_number }}</td>
           </tr>
         </tbody>
+
+        <!-- <tbody *ngIf="patients?.length === 0">
+          <tr>
+            <td colspan="5" class="no-data-available">No data!</td>
+          </tr>
+        </tbody> -->
       </table>
     </div>
     <div class="col-lg-2"></div>

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PatientsService } from 'src/app/services/patients.service';
 import { Subject } from 'rxjs';
-
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'app-patient-list',
@@ -10,9 +10,8 @@ import { Subject } from 'rxjs';
 })
 export class PatientListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  name: string = '';
-  patients: any;
-
+  // name: string = '';
+  patients: any[] = [];
   dtTrigger: Subject<any> = new Subject<any>();
 
   constructor(private patientService: PatientsService) {}
@@ -21,17 +20,21 @@ export class PatientListComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu:[2,5,10,15],
-      dom: 'lrtip'
+      lengthMenu: [2, 5, 10, 15],
+      dom: 'lrtip',
+      destroy: true,
     };
-    this.fetchAllPatients();
-
   }
-  fetchAllPatients(): void {
-    this.patientService.fetchPatient().subscribe(
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+  fetchPatientByName(name: string): void {
+    this.patientService.fetchPatientByName(name).subscribe(
       (patients) => {
         this.patients = patients;
-        console.log(patients);
+        // console.log(patients);
         this.dtTrigger.next();
       },
       (error) => {
@@ -39,6 +42,7 @@ export class PatientListComponent implements OnInit {
       }
     );
   }
-
-  
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+  }
 }

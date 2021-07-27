@@ -1,5 +1,8 @@
 .container{
     margin-top:10%;
 }
+.no-data-available{
+    text-align: center;
+}
 
 /* #f9fafb  background color for the app */
