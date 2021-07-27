@@ -1,4 +1,4 @@
-const con = require("../Server/connection");
+const con = require("../db/DbConnection");
 
 const def = {
   getPatients,
@@ -23,10 +23,11 @@ function getPatients() {
 //get patient by name
 function getPatientByName(name) {
   return new Promise((resolve, reject) => {
-    const query = `SELECT name,age,dob,gender,phone_number FROM patients WHERE name = '${name}'`;
+    const query = `SELECT name,age,dob,gender,phone_number FROM patients WHERE name LIKE '%${name}'`;
+    console.log(query);
     con.dbConnection().then((pool) => {
       pool.query(query, (error, results, fields) => {
-        if (error) throw(error);
+        if (error) throw error;
         resolve(results);
         console.log(results);
       });

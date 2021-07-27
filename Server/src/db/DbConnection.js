@@ -1,6 +1,6 @@
 "use strict";
 
-const db = require("./database.json");
+const config = require("../../config/config.json");
 const mysql = require("mysql");
 
 //connection
@@ -10,11 +10,11 @@ const dbCon = mysql.createPool({
   //   password: db.mysql.port,
   //   database: db.mysql.database,
 
-  host: "134.209.246.16",
-  port: "3306",
-  user: "testuser",
-  password: "123456789",
-  database: "testDatabase",
+  host: config.mysql.host,
+  port: config.mysql.port,
+  user: config.mysql.user,
+  password: config.mysql.password,
+  database: config.mysql.database,
 });
 
 dbCon.getConnection((err) => {

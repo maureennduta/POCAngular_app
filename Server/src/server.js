@@ -1,7 +1,7 @@
 "use strict";
 
 const Hapi = require("@hapi/hapi");
-const dbService = require("./dbService");
+const dbService = require("../src/services/dbService");
 
 const init = async () => {
   //server
