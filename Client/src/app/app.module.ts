@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { PatientsService } from './services/patients.service';
 import {  HttpClientModule } from '@angular/common/http';
+import { HivMonthlyReportComponent } from './components/hiv-monthly-report/hiv-monthly-report.component';
+import { HivpositivePatientsComponent } from './components/hivpositive-patients/hivpositive-patients.component';
+import { HivnegativePatientsComponent } from './components/hivnegative-patients/hivnegative-patients.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import {  HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     PatientListComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    HivMonthlyReportComponent,
+    HivpositivePatientsComponent,
+    HivnegativePatientsComponent
   ],
   imports: [
     BrowserModule,
