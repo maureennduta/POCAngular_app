@@ -29,6 +29,17 @@ const init = async () => {
       },
     },
 
+    //search patient by name
+    {
+      method: "GET",
+      path: "/api/searchPatient/{name}",
+      handler: (request, h) => {
+        let names = request.params.name;
+        // console.log(names);
+        // return names;
+        return dbService.getPatientByName(names);
+      },
+    },
     //Hiv monthly report
     {
       method: "GET",
