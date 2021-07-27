@@ -10,7 +10,7 @@ import { DataTableDirective } from 'angular-datatables';
 })
 export class PatientListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  // name: string = '';
+  name: string = '';
   patients: any[] = [];
   dtTrigger: Subject<any> = new Subject<any>();
 
@@ -24,6 +24,7 @@ export class PatientListComponent implements OnInit {
       dom: 'lrtip',
       destroy: true,
     };
+  this.fetchPatientByName(this.name);
   }
 
   ngOnDestroy(): void {
