@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataTablesModule } from 'angular-datatables';
 import {HttpClientTestingModule} from '@angular/common/http/testing'
 import { PatientListComponent } from './patient-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PatientListComponent', () => {
   let component: PatientListComponent;

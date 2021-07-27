@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { DataTablesModule } from 'angular-datatables';
 
 import { HivnegativePatientsComponent } from './hivnegative-patients.component';
 
@@ -8,7 +11,8 @@ describe('HivnegativePatientsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HivnegativePatientsComponent ]
+      declarations: [ HivnegativePatientsComponent ],
+      imports:[DataTablesModule,HttpClientTestingModule,RouterTestingModule]
     })
     .compileComponents();
   });
