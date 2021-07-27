@@ -43,18 +43,37 @@ const init = async () => {
     //Hiv monthly report
     {
       method: "GET",
-      path: "/api/hivReport",
+      path: "/api/hivReport/{month}",
       handler: (request, h) => {
-        return dbService.getHivReport();
+        let month = request.params.month;
+        // return month;
+        return dbService.getHivMonthlyReport(month);
       },
     },
 
-    //HIV Monthly Report Patient List
+    //HIV positive  Patient List
     {
       method: "GET",
-      path: "/api/patientListReport",
+      path: "/api/positivepatientlist/{location}/{month}",
       handler: (request, h) => {
-        return dbService.getPatientsHivReport();
+        let location = request.params.location;
+        let month = request.params.month;
+
+        // return location;
+        return dbService.getHivPositivePatients(location,month);
+      },
+    },
+
+    //HIV negative  Patient List
+    {
+      method: "GET",
+      path: "/api/negativepatientlist/{location}/{month}",
+      handler: (request, h) => {
+        let location = request.params.location;
+        let month = request.params.month;
+
+        // return location;
+        return dbService.getHivNegativePatients(location,month);
       },
     },
   ]);

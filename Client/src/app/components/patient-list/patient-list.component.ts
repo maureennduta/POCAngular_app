@@ -9,6 +9,8 @@ import { DataTableDirective } from 'angular-datatables';
   styleUrls: ['./patient-list.component.css'],
 })
 export class PatientListComponent implements OnInit {
+  @ViewChild(DataTableDirective)
+  dtElement!: DataTableDirective;
   dtOptions: DataTables.Settings = {};
   name: string = '';
   patients: any[] = [];
@@ -27,10 +29,7 @@ export class PatientListComponent implements OnInit {
   this.fetchPatientByName(this.name);
   }
 
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }
+
   fetchPatientByName(name: string): void {
     this.patientService.fetchPatientByName(name).subscribe(
       (patients) => {
@@ -43,7 +42,19 @@ export class PatientListComponent implements OnInit {
       }
     );
   }
-  ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+  
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
+  }
+
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      this.dtTrigger.next();
+    });
   }
 }
+
