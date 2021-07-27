@@ -4,9 +4,10 @@ const def = {
   getPatients,
   getHivReport,
   getPatientsHivReport,
+  getPatientByName,
 };
 
-//get all patients 
+//get all patients
 function getPatients() {
   return new Promise((resolve, reject) => {
     const query = "SELECT name,age,dob,gender,phone_number FROM patients";
@@ -14,6 +15,20 @@ function getPatients() {
       pool.query(query, (error, results, fields) => {
         if (error) throw error;
         resolve(results);
+      });
+    });
+  });
+}
+
+//get patient by name
+function getPatientByName(name) {
+  return new Promise((resolve, reject) => {
+    const query = `SELECT name,age,dob,gender,phone_number FROM patients WHERE name = '${name}'`;
+    con.dbConnection().then((pool) => {
+      pool.query(query, (error, results, fields) => {
+        if (error) throw(error);
+        resolve(results);
+        console.log(results);
       });
     });
   });
