@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <select
+        aria-placeholder="Choose Month"
+        class="form-select mb-4"
+        [ngModel]="selectedMonth"
+        (ngModelChange)="onChange($event)"
+      >
+        <option value="{{ i.monthID }}" *ngFor="let i of encounterMonths">
+          {{ i.month }}
+        </option>
+      </select>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <table
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+        class="table table-hover"
+      >
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Location</th>
+            <th>HIV Positive</th>
+            <th>HIV Negative</th>
+          </tr>
+        </thead>
+        <tbody ng-if="hivData?.length > 0">
+          <tr *ngFor="let data of hivData">
+            <td>{{ data.Month }}</td>
+            <td>{{ data.Location }}</td>
+            <td [routerLink]="['/positivepatientlist', data.Location,data.Month]">{{ data.Positive }}</td>
+            <td [routerLink]="['/negativepatientlist', data.Location,data.Month]">{{ data.Negative }}</td>
+          </tr>
+        </tbody>
+
+        <tbody *ngIf="hivData?.length === 0">
+          <tr>
+            <td colspan="4" class="no-data-available">No data!</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
