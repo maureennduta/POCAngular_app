@@ -4,5 +4,10 @@
 .no-data-available{
     text-align: center;
 }
+.form-control{
+    width:100%;
+}
+
+
 
 /* #f9fafb  background color for the app */

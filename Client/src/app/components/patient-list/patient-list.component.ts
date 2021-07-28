@@ -2,6 +2,7 @@ import { Component, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { PatientsService } from 'src/app/services/patients.service';
 import { Subject } from 'rxjs';
 import { DataTableDirective } from 'angular-datatables';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-patient-list',
@@ -15,8 +16,9 @@ export class PatientListComponent implements OnInit {
   name: string = '';
   patients: any[] = [];
   dtTrigger: Subject<any> = new Subject<any>();
+  selectedPatient: any;
 
-  constructor(private patientService: PatientsService) {}
+  constructor(private patientService: PatientsService,private modalService:NgbModal) {}
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -26,9 +28,8 @@ export class PatientListComponent implements OnInit {
       dom: 'lrtip',
       destroy: true,
     };
-  this.fetchPatientByName(this.name);
+    this.fetchPatientByName(this.name);
   }
-
 
   fetchPatientByName(name: string): void {
     this.patientService.fetchPatientByName(name).subscribe(
@@ -42,19 +43,23 @@ export class PatientListComponent implements OnInit {
       }
     );
   }
-  
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
 
-  rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
-      dtInstance.destroy();
-      // Call the dtTrigger to rerender again
-      this.dtTrigger.next();
-    });
+  selectPatient(patient: any[], content: any) {
+    this.selectedPatient = patient;
+    console.log(this.selectedPatient);
+    this.modalService.open(content,{ size: 'lg' })
   }
+  // rerender(): void {
+  //   this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+  //     // Destroy the table first
+  //     dtInstance.destroy();
+  //     // Call the dtTrigger to rerender again
+  //     this.dtTrigger.next();
+  //   });
+  // }
 }
-
