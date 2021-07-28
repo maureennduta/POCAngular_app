@@ -27,7 +27,7 @@ function getPatientByName(name) {
     // const query = `SELECT name,age,dob,gender,phone_number FROM patients WHERE name LIKE '%${name}'`;
     const query = `SELECT p.name, p.gender, date_format(p.dob,"%Y-%m-%d") AS Birth_Date, p.age, p.phone_number, e.hiv_status
     FROM testDatabase.patients p
-    JOIN testDatabase.encounters e ON p.patientID = e.encounter_id WHERE p.name LIKE '%${name}'`;
+    LEFT JOIN testDatabase.encounters e ON p.patientID = e.encounter_id WHERE p.name LIKE '%${name}'`;
     con.dbConnection().then((pool) => {
       pool.query(query, (error, results, fields) => {
         if (error) throw error;
