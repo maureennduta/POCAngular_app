@@ -5,11 +5,6 @@ const mysql = require("mysql");
 
 //connection
 const dbCon = mysql.createPool({
-  //   host: db.mysql.host,
-  //   user: db.mysql.user,
-  //   password: db.mysql.port,
-  //   database: db.mysql.database,
-
   host: config.mysql.host,
   port: config.mysql.port,
   user: config.mysql.user,
@@ -31,6 +26,11 @@ function dbConnection() {
   return new Promise((resolve, reject) => {
     resolve(dbCon);
   });
+ 
 }
+
+
+
+
 
 module.exports = serviceDef;

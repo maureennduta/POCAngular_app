@@ -14,6 +14,6 @@ export class PatientsService {
   }
 
   fetchPatientByName(name: string): Observable<any> {
-    return this.httpClient.get(`${baseURL}/searchPatient/${name}`);
+    return this.httpClient.get(`${baseURL}/searchpatient/${name}`);
   }
 }

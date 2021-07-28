@@ -6,9 +6,9 @@ import { HivpositivePatientsComponent } from './components/hivpositive-patients/
 import { PatientListComponent } from './components/patient-list/patient-list.component';
 
 const routes: Routes = [
-  {path:  "", pathMatch:  "full",redirectTo:  "patient_list"},
-  {path: "patient_list", component: PatientListComponent},
-  {path: "HivReport", component: HivMonthlyReportComponent},
+  {path:  "", pathMatch:  "full",redirectTo:  "patientlist"},
+  {path: "patientlist", component: PatientListComponent},
+  {path: "hivreport", component: HivMonthlyReportComponent},
   {path: "positivepatientlist/:location/:month", component: HivpositivePatientsComponent},
   {path: "negativepatientlist/:location/:month", component: HivnegativePatientsComponent},
 ];

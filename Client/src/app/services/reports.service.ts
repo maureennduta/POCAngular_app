@@ -11,7 +11,7 @@ export class ReportsService {
 
   //hiv monthly report
   getHivMonthlyReport(month:number): Observable<any> {
-    return this.httpClient.get(`${baseURL}/hivReport/${month}`);
+    return this.httpClient.get(`${baseURL}/hivreport/${month}`);
   }
 
   //hiv positive patients list

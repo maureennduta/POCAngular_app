@@ -4,7 +4,7 @@
     <div class="col-lg-8">
       <select
         class="form-select mb-4"
-        [ngModel]="selectedMonth"
+        [ngModel]="selectedMonth"  
         (ngModelChange)="onChange($event)"
       >
         <option value="{{ i.monthID }}" *ngFor="let i of encounterMonths">
