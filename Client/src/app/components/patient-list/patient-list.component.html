@@ -32,7 +32,7 @@
             <th>Gender</th>
             <th>DOB</th>
             <th>Phone number</th>
-            <th>Hiv Status</th>
+            <!-- <th>Hiv Status</th> -->
             <th>Action</th>
           </tr>
         </thead>
@@ -44,7 +44,7 @@
             <td>{{ patient.gender }}</td>
             <td>{{ patient.Birth_Date }}</td>
             <td>{{ patient.phone_number }}</td>
-            <td>{{ patient.hiv_status }}</td>
+            <!-- <td>{{ patient.hiv_status }}</td> -->
             <td>
               <button
                 class="btn btn-default"
@@ -58,7 +58,7 @@
 
         <tbody *ngIf="patients?.length === 0">
           <tr>
-            <td colspan="7" class="no-data-available">No data!</td>
+            <td colspan="6" class="no-data-available">No data available in table!</td>
           </tr>
         </tbody>
       </table>
