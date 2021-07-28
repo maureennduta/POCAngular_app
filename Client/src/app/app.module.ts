@@ -14,6 +14,7 @@ import {  HttpClientModule } from '@angular/common/http';
 import { HivMonthlyReportComponent } from './components/hiv-monthly-report/hiv-monthly-report.component';
 import { HivpositivePatientsComponent } from './components/hivpositive-patients/hivpositive-patients.component';
 import { HivnegativePatientsComponent } from './components/hivnegative-patients/hivnegative-patients.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { HivnegativePatientsComponent } from './components/hivnegative-patients/
     AppRoutingModule,
     FormsModule,
     DataTablesModule,
-    HttpClientModule 
+    HttpClientModule,
+    NgbModule 
   ],
   providers: [PatientsService],
   bootstrap: [AppComponent]
